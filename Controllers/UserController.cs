@@ -78,7 +78,7 @@ namespace urban_farms.Controllers
       var exists = await _context.Users.AnyAsync(u => u.Email == user.Email || u.Email == user.Email);
       if (exists)
       {
-        return BadRequest(new { message = "User with the email already exists" });
+        return BadRequest(new { message = "Welcome" });
       }
       _context.Users.Add(user);
       await _context.SaveChangesAsync();

@@ -56,6 +56,7 @@ namespace urban_farms
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
       app.UseSwagger();
+      app.UseCors();
 
       // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
       // specifying the Swagger JSON endpoint.

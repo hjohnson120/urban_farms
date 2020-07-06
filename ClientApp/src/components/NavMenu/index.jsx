@@ -10,38 +10,12 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './style.scss'
-import { GoogleLogout, GoogleLogin } from 'react-google-login'
 
 const NavMenu = () => {
-  const displayName = NavMenu.name
   const [collapsed, setCollapsed] = useState(true)
-  const [isSignedIn, setIsSignedIn] = useState(false)
-  const [accessToken, setAccessToken] = useState('')
-  const [user, setUser] = useState(null)
 
   const toggleNavbar = () => {
     setCollapsed(!collapsed)
-  }
-
-  const responseGoogle = response => {
-    if (response.accessToken) {
-      const userInfo = response.profileObj
-      setIsSignedIn(true)
-      setUser({
-        email: userInfo.email,
-        firstName: userInfo.givenName,
-        lastName: userInfo.familyName,
-      })
-      setAccessToken(response.accessToken)
-    }
-    // window.location.href = '/home'
-  }
-
-  console.log(isSignedIn)
-
-  const logout = () => {
-    window.location.href = '/'
-    setIsSignedIn(false)
   }
 
   return (
@@ -60,35 +34,18 @@ const NavMenu = () => {
             isOpen={collapsed}
             navbar
           >
-            {!isSignedIn ? (
-              <GoogleLogin
-                clientId="379748035017-907fuiclnmjc5esg1926ot6nqlp2jcr9.apps.googleusercontent.com"
-                buttonText="Login with Google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
-              />
-            ) : (
-              <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/home">
-                    Home
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/products">
-                    Products
-                  </NavLink>
-                </NavItem>
-                <GoogleLogout
-                  clientId="379748035017-907fuiclnmjc5esg1926ot6nqlp2jcr9.apps.googleusercontent.com"
-                  buttonText="Logout"
-                  onLogoutSuccess={logout}
-                  isSignedIn={false}
-                ></GoogleLogout>
-              </ul>
-            )}
+            <ul className="navbar-nav flex-grow">
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/home">
+                  Home
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/products">
+                  Products
+                </NavLink>
+              </NavItem>
+            </ul>
           </Collapse>
         </Container>
       </Navbar>

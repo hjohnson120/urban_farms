@@ -77,18 +77,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const classes = useStyles()
   const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
-
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
 
   const menuLinks = [{ name: 'Products' }, { name: 'Home' }]
 
@@ -98,21 +89,21 @@ export default function PersistentDrawerLeft() {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          [classes.appBarShift]: props.open,
         })}
       >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={props.handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButton, props.open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            {!open && 'Creek Bottom Farms'}
+            {!props.open && 'Creek Bottom Farms'}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -120,16 +111,14 @@ export default function PersistentDrawerLeft() {
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={props.open}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
-          <Typography variant="h8" noWrap>
-            {open && 'Creek Bottom Farms'}
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
+          <Typography noWrap>{props.open && 'Creek Bottom Farms'}</Typography>
+          <IconButton onClick={props.handleDrawerClose}>
             {theme.direction === 'ltr' ? (
               <ChevronLeftIcon />
             ) : (
@@ -163,7 +152,7 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open,
+          [classes.contentShift]: props.open,
         })}
       >
         <div className={classes.drawerHeader} />

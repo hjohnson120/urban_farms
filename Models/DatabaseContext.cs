@@ -21,6 +21,10 @@ namespace urban_farms.Models
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
 
+    public DbSet<Recipe> Recipes { get; set; }
+    public DbSet<RecipeStep> RecipeSteps { get; set; }
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       if (!optionsBuilder.IsConfigured)

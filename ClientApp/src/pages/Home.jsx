@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import Recipe from '../components/Recipe'
 import Tabs from '../components/Tabs'
 
 const Home = () => {
@@ -6,7 +7,9 @@ const Home = () => {
     <div>
       <h1 className="header">Welcome to the Farm</h1>
       <Tabs>
-        <div label="Recipes">It's a thing</div>
+        <div label="Recipes">
+          <Recipe />
+        </div>
         <div label="The Farm">More things</div>
         <div label="Blog Posts">The last thing.</div>
       </Tabs>

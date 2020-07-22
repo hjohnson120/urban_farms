@@ -38,6 +38,5 @@ namespace urban_farms.Models
         optionsBuilder.UseNpgsql(conn);
       }
     }
-
   }
 }

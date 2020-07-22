@@ -5,6 +5,18 @@ const Recipe = () => {
   const [recipes, setRecipes] = useState([])
   const [steps, setSteps] = useState([])
 
+  // const payload = {
+  //   title: '',
+  //   description: '',
+  //   saved: false,
+  //   recipeSteps: [
+  //     'foo',
+  //     'bar'
+  //   ]
+  // }
+
+  // axios.post('path/to/api', payload)
+
   useEffect(() => {
     axios
       .get('/api/recipe')

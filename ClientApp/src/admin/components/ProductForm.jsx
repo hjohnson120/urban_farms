@@ -13,11 +13,13 @@ const ProductForm = () => {
   const [available, setAvailable] = useState(0)
   const [price, setPrice] = useState(0)
 
-  console.log(typeof price)
   const addProduct = e => {
     e.preventDefault()
     const updateTypePrice = parseInt(price)
+    const updateTypeAvailable = parseInt(available)
     setPrice(updateTypePrice)
+    setAvailable(updateTypeAvailable)
+
     axios
       .post('/api/product', {
         name,
